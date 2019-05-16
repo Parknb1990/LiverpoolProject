@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="join" >
+  	
+  	<insert id="insertUserOne" parameterType="kr.co.liverpool.user.vo.MemberVO">
+  		INSERT INTO REGISTER(userEmail, userPassword, userPostcode, userAddr1, userAddr2, userAddr3) 
+  		VALUES (#{userEmail}, #{userPassword}, #{userPostcode}, #{userAddr1}, #{userAddr2}, #{userAddr3}) 
+  	</insert>
+  	
+  	<select id="checkUserIdOne" parameterType="kr.co.liverpool.join.vo.MemberVO" resultType="kr.co.liverpool.join.vo.UserVO">
+  		SELECT USERID
+  			,USERNM
+		FROM USERS 
+		WHERE 
+			USERID = #{userId}
+  	</select>
+  
+  </mapper>

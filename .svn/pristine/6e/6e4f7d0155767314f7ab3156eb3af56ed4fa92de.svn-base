@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="board" >
+  	
+  	<!--게시글 테이블에서 Bstep 즉 댓글이 아닌 게시글 전체 조회  -->
+  	<select id="selectBoardList" resultType="kr.co.ta9.board.vo.BoardVO">
+		SELECT BID
+			,USERID
+			,BTITLE
+			,BCONTENT
+			,BDATE
+			,BHIT
+			,BGROUP
+			,BSTEP
+			,BINDENT
+		FROM MVC_BOARD
+		WHERE 
+			BSTEP = 0 
+		ORDER BY BGROUP DESC, BSTEP ASC
+  	</select>
+  	
+  	<!-- 게시글 insert  -->
+  	<insert id="insertBoardOne" parameterType="kr.co.ta9.board.vo.BoardVO">
+		INSERT INTO MVC_BOARD(BID, USERID, BTITLE, BCONTENT, BGROUP, BINDENT, BSTEP) 
+		VALUES (MVC_BOARD_SEQ.NEXTVAL, #{userId}, #{bTitle}, #{bContent}, MVC_BOARD_SEQ.CURRVAL, 0, 0) 
+  	
+  	</insert>
+  	
+  	<!--게시글 번호에 대한 상세조회  -->
+  	<select id="selectBoardOne" parameterType="kr.co.ta9.board.vo.BoardVO" resultType="kr.co.ta9.board.vo.BoardVO">
+		SELECT BID
+			,USERID
+			,BTITLE
+			,BCONTENT
+			,BDATE
+			,BHIT
+			,BGROUP
+			,BSTEP
+			,BINDENT
+		FROM MVC_BOARD 
+		WHERE 
+			BID =  #{bId} 
+		ORDER BY BGROUP DESC, BSTEP ASC
+  	</select>
+  	
+  	<!-- 게시글 번호에 대한 수정 -->
+  	<update id="updateBoardOne" parameterType="kr.co.ta9.board.vo.BoardVO">
+		UPDATE MVC_BOARD 
+		SET 
+			BTITLE = #{bTitle}
+			,BCONTENT = #{bContent} 
+		WHERE 
+			BID = #{bId}  	
+  	</update>
+  	
+  	<!-- 해당 게시글 번호에 대한 댓글 입력 -->
+  	<insert id="insertReply" parameterType="kr.co.ta9.board.vo.BoardVO">
+  		INSERT INTO MVC_BOARD(BID, USERID, BCONTENT, BGROUP, BSTEP, BINDENT ) 
+  		VALUES (MVC_BOARD_SEQ.NEXTVAL, #{userId}, #{bContent}, #{bId}, #{bStep} + 1, #{bIndent} + 1) 
+  	</insert>
+  	
+  	<!--  댓글 입력시 최신 순을 위해 step 값 업데이트 -->
+  	<update id="updateStep" parameterType="kr.co.ta9.board.vo.BoardVO">
+		UPDATE MVC_BOARD 
+		SET BSTEP = BSTEP + 1 
+		WHERE BGROUP = #{bGroup} AND BSTEP > #{bStep} 
+  		
+  	</update>
+  	
+  	<!-- 해당 게시글에 대한 댓글 조회  -->
+  	<select id="selectReplyList" resultType="kr.co.ta9.board.vo.BoardVO" parameterType="int">
+  		SELECT BID
+  			,USERID
+  			,BTITLE
+  			,BCONTENT
+  			,BDATE
+  			,BHIT
+  			,BGROUP
+  			,BSTEP
+  			,BINDENT
+ 		FROM MVC_BOARD 
+ 		WHERE 
+ 			BGROUP = #{bId} AND BID != #{bId} 
+ 		ORDER BY BSTEP ASC
+  	
+  	</select>
+  	
+  	<!-- 해당 게스글 조회수 업 -->
+  	<update id="updateHit" parameterType="int">
+		UPDATE MVC_BOARD 
+		SET BHIT = BHIT + 1 WHERE BID = #{bId}
+  	</update>
+  	
+  	<!-- 해당 게시글 삭제 처리 -->
+  	<delete id="deleteBoardOne" parameterType="kr.co.ta9.board.vo.BoardVO" >
+  		DELETE FROM MVC_BOARD 
+  		WHERE BID = #{bId} OR BGROUP = #{bId}
+  	</delete>
+  
+  </mapper>

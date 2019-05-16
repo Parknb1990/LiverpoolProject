@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="nickname" >
+  	
+<!--   	<insert id="insertUserOne" parameterType="kr.co.liverpool.user.vo.MemberVO">
+  		INSERT INTO REGISTER(userEmail, userPassword, userPostcode, userAddr1, userAddr2, userAddr3) 
+  		VALUES (#{userEmail}, #{userPassword}, #{userPostcode}, #{userAddr1}, #{userAddr2}, #{userAddr3}) 
+  	</insert>   -->
+  	
+  	<select id="NickCheck" resultType="kr.co.liverpool.common.vo.UserVO">
+  			SELECT 
+  				userNickName 
+  			FROM 
+  				USER_INFO
+  			WHERE
+  				userNickName = #{userNickName}
+  		
+  	</select>
+
+  </mapper>

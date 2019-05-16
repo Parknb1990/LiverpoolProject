@@ -1,0 +1,37 @@
+package kr.co.liverpool.reply.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+import kr.co.liverpool.board.service.BoardService;
+import kr.co.liverpool.common.vo.ReplyVO;
+import kr.co.liverpool.reply.service.ReplyService;
+
+
+@Controller
+public class ReplyController {
+	
+	@Autowired
+	private BoardService boardService;
+
+	@Autowired
+	ReplyService replyService;
+
+	@RequestMapping(value="/replyboard", method=RequestMethod.POST)
+	public ModelAndView viewreply(ReplyVO replyVO, ModelAndView mav) {
+		
+		replyService.saveReply(replyVO);
+
+		mav.setViewName("boardview/boardview");
+		
+		//게시글 상세보기
+		mav.addObject("dto", boardService.read(replyVO.getbId()));
+		
+		return mav;
+	}
+}
+
+ 

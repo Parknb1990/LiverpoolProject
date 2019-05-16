@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="check" >
+  	
+  	<!-- 이메일 체크 sql -->
+	<select id="EmailCheck" resultType="kr.co.liverpool.common.vo.UserVO">
+		SELECT 
+			USEREMAIL
+		FROM
+			USER_INFO
+		WHERE
+			USEREMAIL = #{userEmail}
+	</select>
+	
+  </mapper>

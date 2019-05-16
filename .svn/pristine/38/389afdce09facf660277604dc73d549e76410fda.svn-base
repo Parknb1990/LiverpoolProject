@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="board" >
+  	
+<!--   	<insert id="insertUserOne" parameterType="kr.co.liverpool.user.vo.MemberVO">
+  		INSERT INTO REGISTER(userEmail, userPassword, userPostcode, userAddr1, userAddr2, userAddr3) 
+  		VALUES (#{userEmail}, #{userPassword}, #{userPostcode}, #{userAddr1}, #{userAddr2}, #{userAddr3}) 
+  	</insert>   -->
+  	
+  	<insert id="insertBoard" parameterType="kr.co.liverpool.common.vo.UserVO">
+  		INSERT INTO BOARD (userEmail, boardSelect, boardTitle, boardContent, boardDate, userNickName)
+  		values ( 
+  					  #{userEmail}
+  					, #{boardSelect}
+  					, #{boardTitle}
+  				 	, #{boardContent}
+  				 	, SYSDATE
+  				 	, #{userNickName}
+
+  				 )
+  	</insert>
+
+  </mapper>

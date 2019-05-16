@@ -1,0 +1,28 @@
+package kr.co.liverpool.reply.dao;
+
+import java.util.List;
+import java.util.Map;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class ReplyDAO {
+
+	@Autowired
+	SqlSession sqlSession;
+	
+	public void insertComment(Map<String, Object> map) {
+		sqlSession.insert("reply.insertComment", map);
+	}
+	
+	public List<Map<String, Object>> selectCommentList(Map<String, Object> map) {
+		return sqlSession.selectList("reply.selectComment", map);
+	}
+	
+	public void deleteComment(Map<String, Object> map) {
+		sqlSession.update("reply.deleteComment", map);
+	}
+	
+}

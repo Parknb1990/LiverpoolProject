@@ -1,0 +1,23 @@
+package kr.co.liverpool.schedule.dao;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import kr.co.liverpool.common.vo.SchduleVO;
+
+@Repository
+public class SchduleDAO {
+	
+	@Autowired
+	SqlSession sqlSession;
+
+	public List<SchduleVO> schduleCheck() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("schdule.schduleCheck");
+	}
+	
+	
+}

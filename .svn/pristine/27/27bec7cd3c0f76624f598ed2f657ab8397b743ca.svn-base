@@ -1,0 +1,21 @@
+package kr.co.liverpool.register.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import kr.co.liverpool.common.vo.UserVO;
+import kr.co.liverpool.register.dao.RegisterDAO;
+import kr.co.liverpool.register.service.RegisterService;
+
+@Service
+public class RegisterServiceImpl implements RegisterService {
+
+	@Autowired
+	private RegisterDAO registerDAO;
+	
+	@Override
+	public void insertUserOne(UserVO userVO) {
+		registerDAO.insertUserOne(userVO);
+	}
+
+}

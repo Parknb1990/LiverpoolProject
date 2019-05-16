@@ -1,0 +1,12 @@
+package kr.co.liverpool.register.service;
+
+import kr.co.liverpool.common.vo.UserVO;
+
+public interface RegisterService {
+
+	public void insertUserOne(UserVO userVO);
+
+	public UserVO EmailCheck(UserVO userVO);
+	
+	public UserVO NickNameCheck(UserVO userVO);
+}

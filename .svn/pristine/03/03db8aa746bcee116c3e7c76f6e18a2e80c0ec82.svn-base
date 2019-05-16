@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="login" >
+  	
+<!--   	<insert id="insertUserOne" parameterType="kr.co.liverpool.user.vo.MemberVO">
+  		INSERT INTO REGISTER(userEmail, userPassword, userPostcode, userAddr1, userAddr2, userAddr3) 
+  		VALUES (#{userEmail}, #{userPassword}, #{userPostcode}, #{userAddr1}, #{userAddr2}, #{userAddr3}) 
+  	</insert>   -->
+  	
+  	<!-- <insert id="insertUserOne" parameterType="kr.co.liverpool.common.vo.UserVO">
+  		INSERT INTO USER_INFO (userEmail, userPassword, userNickname, userName, postCode, userAddr1, referAddr, userAddr2)
+  		values ( #{userEmail},
+  					#{userPassword},
+  				 	#{userNickname},
+  				 	#{userName},
+  				 	#{postCode}, 
+  				 	#{userAddr1}, 
+  				 	#{referAddr}, 
+  				 	#{userAddr2}
+  				 )
+  	</insert> -->
+  	
+  	<select id="selectUserOne" resultType="kr.co.liverpool.common.vo.UserVO">
+  		SELECT
+ 				  userEmail
+ 				, userPassword
+ 				, userNickName
+ 				, userName
+ 				, postCode
+ 				, userAddr1
+ 				, referAddr
+ 				, userAddr2
+  		FROM 
+  			USER_INFO
+  		WHERE 
+  			userEmail = #{userEmail} 
+  			AND userPassword = #{userPassword}
+  	</select>
+
+  </mapper>

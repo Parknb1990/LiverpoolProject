@@ -1,0 +1,22 @@
+package kr.co.liverpool.register.dao;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import kr.co.liverpool.common.vo.UserVO;
+
+@Repository
+public class RegisterDAO {
+	
+	@Autowired 
+	SqlSession sqlSession;
+	
+	UserVO userVO;
+	
+	public void insertUserOne(UserVO userVO) {
+		sqlSession.insert("register.insertUserOne", userVO);
+	}
+
+
+}

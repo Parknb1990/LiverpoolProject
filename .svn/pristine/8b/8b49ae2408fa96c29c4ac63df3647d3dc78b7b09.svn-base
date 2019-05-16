@@ -1,0 +1,30 @@
+package kr.co.liverpool.reply.service.serviceimpl;
+
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import kr.co.liverpool.reply.dao.ReplyDAO;
+import kr.co.liverpool.reply.service.ReplyService;
+
+@Service
+public class ReplyServiceImpl implements ReplyService {
+
+	
+	@Autowired
+	private ReplyDAO replyDAO;
+
+	@Override
+	public void writeComment(Map<String, Object> map) {
+		replyDAO.insertComment(map);
+		
+	}
+
+	@Override
+	public void deleteComment(Map<String, Object> map) {
+		replyDAO.deleteComment(map);
+	}
+	
+
+}

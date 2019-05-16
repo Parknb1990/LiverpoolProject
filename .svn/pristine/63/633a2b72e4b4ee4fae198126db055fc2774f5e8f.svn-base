@@ -1,0 +1,58 @@
+package kr.co.liverpool.common.vo;
+
+public class ReplyVO {
+
+	private Integer REPLYNUM;	//´ñ±Û ½ÃÄö½º
+	private Integer BOARDNUM;	//´ñ±Û ¼ø¼­
+	private String REPLYCOMMENT;	//´ñ±Û ³»¿ë
+	private String REPLYNAME;	//´ñ±Û ÀÛ¼ºÀÚ
+	private String REPLYDATE;	//´ñ±Û ½Ã°£
+	public Integer getREPLYNUM() {
+		return REPLYNUM;
+	}
+	public void setREPLYNUM(Integer rEPLYNUM) {
+		REPLYNUM = rEPLYNUM;
+	}
+	public Integer getBOARDNUM() {
+		return BOARDNUM;
+	}
+	public void setBOARDNUM(Integer bOARDNUM) {
+		BOARDNUM = bOARDNUM;
+	}
+	public String getREPLYCOMMENT() {
+		return REPLYCOMMENT;
+	}
+	public void setREPLYCOMMENT(String rEPLYCOMMENT) {
+		REPLYCOMMENT = rEPLYCOMMENT;
+	}
+	public String getREPLYNAME() {
+		return REPLYNAME;
+	}
+	public void setREPLYNAME(String rEPLYNAME) {
+		REPLYNAME = rEPLYNAME;
+	}
+	public String getREPLYDATE() {
+		return REPLYDATE;
+	}
+	public void setREPLYDATE(String rEPLYDATE) {
+		REPLYDATE = rEPLYDATE;
+	}
+	@Override
+	public String toString() {
+		return "ReplyVO [REPLYNUM=" + REPLYNUM + ", BOARDNUM=" + BOARDNUM + ", REPLYCOMMENT=" + REPLYCOMMENT
+				+ ", REPLYNAME=" + REPLYNAME + ", REPLYDATE=" + REPLYDATE + "]";
+	}
+	public ReplyVO(Integer rEPLYNUM, Integer bOARDNUM, String rEPLYCOMMENT, String rEPLYNAME, String rEPLYDATE) {
+		super();
+		REPLYNUM = rEPLYNUM;
+		BOARDNUM = bOARDNUM;
+		REPLYCOMMENT = rEPLYCOMMENT;
+		REPLYNAME = rEPLYNAME;
+		REPLYDATE = rEPLYDATE;
+	}
+	public ReplyVO() {
+		super();
+	}
+	
+	
+}

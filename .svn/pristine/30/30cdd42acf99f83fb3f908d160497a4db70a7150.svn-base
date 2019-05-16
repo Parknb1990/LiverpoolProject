@@ -1,0 +1,89 @@
+package kr.co.liverpool.common.vo;
+
+public class BoardVO {
+
+	private int BOARDNUM;
+	private String BOARDTITLE;
+	private String BOARDCONTENT;
+	private String BOARDDATE;
+	private String USEREMAIL;
+	private String USERNICKNAME;
+	private String BOARDCATEGORY;
+	private String VIEWCNT;
+	
+	public String getVIEWCNT() {
+		return VIEWCNT;
+	}
+	public void setVIEWCNT(String vIEWCNT) {
+		VIEWCNT = vIEWCNT;
+	}
+	public int getBOARDNUM() {
+		return BOARDNUM;
+	}
+	public void setBOARDNUM(int bOARDNUM) {
+		BOARDNUM = bOARDNUM;
+	}
+	public String getBOARDTITLE() {
+		return BOARDTITLE;
+	}
+	public void setBOARDTITLE(String bOARDTITLE) {
+		BOARDTITLE = bOARDTITLE;
+	}
+	public String getBOARDCONTENT() {
+		return BOARDCONTENT;
+	}
+	public void setBOARDCONTENT(String bOARDCONTENT) {
+		BOARDCONTENT = bOARDCONTENT;
+	}
+	public String getBOARDDATE() {
+		return BOARDDATE;
+	}
+	public void setBOARDDATE(String bOARDDATE) {
+		BOARDDATE = bOARDDATE;
+	}
+	public String getUSEREMAIL() {
+		return USEREMAIL;
+	}
+	public void setUSEREMAIL(String uSEREMAIL) {
+		USEREMAIL = uSEREMAIL;
+	}
+	public String getUSERNICKNAME() {
+		return USERNICKNAME;
+	}
+	public void setUSERNICKNAME(String uSERNICKNAME) {
+		USERNICKNAME = uSERNICKNAME;
+	}
+	public String getBOARDCATEGORY() {
+		return BOARDCATEGORY;
+	}
+	public void setBOARDCATEGORY(String bOARDCATEGORY) {
+		BOARDCATEGORY = bOARDCATEGORY;
+	}
+	
+
+	public BoardVO(int bOARDNUM, String bOARDTITLE, String bOARDCONTENT, String bOARDDATE, String uSEREMAIL,
+			String uSERNICKNAME, String bOARDCATEGORY, String vIEWCNT) {
+		super();
+		BOARDNUM = bOARDNUM;
+		BOARDTITLE = bOARDTITLE;
+		BOARDCONTENT = bOARDCONTENT;
+		BOARDDATE = bOARDDATE;
+		USEREMAIL = uSEREMAIL;
+		USERNICKNAME = uSERNICKNAME;
+		BOARDCATEGORY = bOARDCATEGORY;
+		VIEWCNT = vIEWCNT;
+	}
+	
+
+	@Override
+	public String toString() {
+		return "BoardVO [BOARDNUM=" + BOARDNUM + ", BOARDTITLE=" + BOARDTITLE + ", BOARDCONTENT=" + BOARDCONTENT
+				+ ", BOARDDATE=" + BOARDDATE + ", USEREMAIL=" + USEREMAIL + ", USERNICKNAME=" + USERNICKNAME
+				+ ", BOARDCATEGORY=" + BOARDCATEGORY + ", VIEWCNT=" + VIEWCNT + "]";
+	}
+	public BoardVO() {
+		super();
+	}
+	
+	
+}

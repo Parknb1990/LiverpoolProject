@@ -1,0 +1,27 @@
+package kr.co.liverpool.animal.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import kr.co.liverpool.animal.service.AnimalService;
+import kr.co.liverpool.common.vo.BoardVO;
+
+@Controller
+public class AnimalController {
+	
+	@Autowired
+	AnimalService animalService;
+	
+	@RequestMapping(value="/animal")
+	public String animal(Model model) throws Exception {
+		
+		List<BoardVO> list = animalService.selectAnimal();
+		model.addAttribute("list", list);
+		return "animal/animal";
+	}
+
+}

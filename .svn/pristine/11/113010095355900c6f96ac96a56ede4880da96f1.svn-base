@@ -1,0 +1,73 @@
+package kr.co.liverpool.common.vo;
+
+import java.sql.Date;
+
+public class BoardVO {
+
+	private String userEmail;	//사용자 이메일
+	private String userNickName;	//사용자 닉네임
+	private String boardTitle;		//게시판 제목
+	private String boardContent;	//게시판 내용
+	private String boardSelect;	//게시판 카테고리
+	private String boardDate;
+	public String getUserEmail() {
+		return userEmail;
+	}
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
+	}
+	public String getUserNickName() {
+		return userNickName;
+	}
+	public void setUserNickName(String userNickName) {
+		this.userNickName = userNickName;
+	}
+	public String getBoardTitle() {
+		return boardTitle;
+	}
+	public void setBoardTitle(String boardTitle) {
+		this.boardTitle = boardTitle;
+	}
+	public String getBoardContent() {
+		return boardContent;
+	}
+	public void setBoardContent(String boardContent) {
+		this.boardContent = boardContent;
+	}
+	public String getBoardSelect() {
+		return boardSelect;
+	}
+	public void setBoardSelect(String boardSelect) {
+		this.boardSelect = boardSelect;
+	}
+	public String getBoardDate() {
+		return boardDate;
+	}
+	public void setBoardDate(String boardDate) {
+		this.boardDate = boardDate;
+	}
+	@Override
+	public String toString() {
+		return "BoardVO [userEmail=" + userEmail + ", userNickName=" + userNickName + ", boardTitle=" + boardTitle
+				+ ", boardContent=" + boardContent + ", boardSelect=" + boardSelect + ", boardDate=" + boardDate + "]";
+	}
+	public BoardVO(String userEmail, String userNickName, String boardTitle, String boardContent, String boardSelect,
+			String boardDate) {
+		super();
+		this.userEmail = userEmail;
+		this.userNickName = userNickName;
+		this.boardTitle = boardTitle;
+		this.boardContent = boardContent;
+		this.boardSelect = boardSelect;
+		this.boardDate = boardDate;
+	}
+	public BoardVO() {
+		super();
+	}
+	
+	
+	
+	
+	
+	
+}

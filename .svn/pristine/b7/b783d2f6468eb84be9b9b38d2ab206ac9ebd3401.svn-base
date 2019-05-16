@@ -1,0 +1,5 @@
+package kr.co.liverpool.board.service.serviceimpl;
+
+public class BoardServiceImpl {
+
+}

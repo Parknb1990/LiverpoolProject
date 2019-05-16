@@ -1,0 +1,10 @@
+package kr.co.liverpool.game.service;
+
+import java.util.List;
+
+import kr.co.liverpool.common.vo.BoardVO;
+
+public interface GameService {
+
+	public List<BoardVO> selectGame();
+}

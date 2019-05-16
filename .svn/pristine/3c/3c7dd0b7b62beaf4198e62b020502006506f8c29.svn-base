@@ -1,0 +1,14 @@
+package kr.co.liverpool.humor.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class HumorController {
+
+	@RequestMapping(value="humor")
+	public String humor() {
+		
+		return "humor/humor";
+	}
+}

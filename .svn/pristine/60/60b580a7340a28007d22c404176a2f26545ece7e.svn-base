@@ -1,0 +1,8 @@
+package kr.co.liverpool.schedule.service;
+
+import kr.co.liverpool.common.vo.SchduleVO;
+
+public interface SchduleService {
+
+	public SchduleVO Schdule(SchduleVO schduleVO);
+}

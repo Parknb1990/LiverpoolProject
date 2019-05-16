@@ -1,0 +1,192 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>로그인 페이지</title>
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="/assets/css/bootstrap/bootstrap.min.css">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="/assets/css/bootstrap/bootstrap-theme.min.css">
+
+        <!-- Custom css -->
+        <link rel="stylesheet" href="/assets/css/style.css">
+        
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+        
+        <link rel="stylesheet" href="/assets/css/ionicons.min.css">
+        
+        <!-- Flexslider -->
+        <link rel="stylesheet" href="/assets/css/flexslider.css">
+        
+        <!-- Owl -->
+        <link rel="stylesheet" href="/assets/css/owl.carousel.css">
+        
+        <!-- Magnific Popup -->
+        <link rel="stylesheet" href="/assets/css/magnific-popup.css">
+
+    </head>
+    <body>
+      
+        <!--  Loader  -->
+        <div id="myloader">
+            <div class="loader">
+                <div class="spinner">
+                    <div class="double-bounce1"></div>
+                    <div class="double-bounce2"></div>
+                </div>
+            </div>
+        </div>
+        <!--  END Loader  -->
+        
+
+        <!--  Main Wrap  -->
+        <div id="main-wrap">
+            <!--  Header & Menu  -->
+           <jsp:include page="../header.jsp"></jsp:include>
+            <!--  END Header & Menu  -->
+
+			 <!--  Page Content  -->
+            <div id="page-content" style="height: 850px;">
+                
+                <!--  HomePage header  -->
+                <div class="container">
+                   <div class="row no-margin">
+                       <div class="col-md-12 padding-leftright-null">
+                           <div id="home-header">
+                               <div class="text" style="padding-top: 80px">
+                               	<h3>로그인</h3><br/><br/>
+                                 
+                                  <form id = "frm">
+                               			<div class="form-group">
+                               				<label>이메일주소</label><br/>
+                               				<input type="text" id="userEmail" name="userEmail" class="form-control" style="width:350px;">
+                               			</div>
+                               			
+                               			<div class="form-group">
+                               				<label>패스워드</label><br/>
+                               				<input type="password" id="userPassword" name="userPassword" class="form-control" style="width:350px;">
+                               			</div>
+                               			<div class="btn-area">
+                               				<input type="button" id="login_btn" class="btn btn-primary"  value="로그인">
+                               			</div>
+                               		</form>
+                               		<br/>
+                               		<div class="col-10-lg">
+                               			<h4>아직 회원이 아니신가요?</h4><br/>
+                               			<h5>가입을 원하시면 회원가입 버튼을 눌러주세요.</h5><br/>
+                               			<button type="button" onclick="location.href='register'" class="btn btn-primary">회원가입</button>
+                               		</div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+                </div>
+       	 </div>
+       	 </div>
+        <!--  Main Wrap  -->
+		
+		<script>
+		
+			$(document).ready(function() {
+				
+				//EL태그로 받기 
+				var msg = "${msg}";
+				if(msg.length != 0) {
+					alert(msg);
+				} 
+				
+				$("#login_btn").on('click', function(e) {
+					e.preventDefault();
+					fn_login();
+				}); 
+				
+				//비밀번호를 입력하고 엔터키를 눌렀을 때 실행되는 함수
+				$("input[name=userPassword]").keydown(function (key) {
+					if(key.keyCode==13) {
+						fn_login();
+					}
+				});
+				
+				//로그인 실행 함수
+				function fn_login() {
+					if ($("#userEmail").val().length<1) {
+						alert("이메일주소를 입력해주세요.");
+						return false;
+						
+					} else if ($("#userPassword").val().length<1) {
+						alert("비밀번호를 입력해주세요.");
+						return false;
+						
+					} else {
+						$("#frm").attr("action","/login");
+						$("#frm").attr("method", "post");
+						$("#frm").submit();
+					}
+				}
+			}); 
+			 
+			
+		</script>
+       
+       
+        <footer>
+            <jsp:include page="../footer.jsp"></jsp:include>
+        <!--  END Footer. Class fixed for fixed footer  -->
+        </footer>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="/assets/js/jquery.min.js"></script>
+        <!-- All js library -->
+        <script src="/assets/js/bootstrap/bootstrap.min.js"></script>
+        <script src="/assets/js/boostrrap/bootstrpa.bundle.ming.js"></script>
+        <script src="/assets/js/jquery.flexslider-min.js"></script>
+        <script src="/assets/js/owl.carousel.min.js"></script>
+        <script src="/assets/js/isotope.min.js"></script>
+        <script src="/assets/js/jquery.magnific-popup.min.js"></script>
+        <!-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=false"></script> -->
+        <script src="/assets/js/jquery.scrollTo.min.js"></script>
+        <script src="/assets/js/smooth.scroll.min.js"></script>
+        <script src="/assets/js/jquery.appear.js"></script>
+        <script src="/assets/js/jquery.countTo.js"></script>
+        <script src="/assets/js/jquery.scrolly.js"></script>
+        <script src="/assets/js/plugins-scroll.js"></script>
+        <script src="/assets/js/imagesloaded.min.js"></script>
+        <script src="/assets/js/pace.min.js"></script>
+        <script src="/assets/js/main.js"></script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

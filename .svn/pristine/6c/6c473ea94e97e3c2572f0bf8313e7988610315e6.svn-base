@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="reply" >
+
+  	
+  	<!-- 게시글 작성하기 -->
+  	<insert id="insertComment" parameterType="kr.co.liverpool.common.vo.ReplyVO">
+  		INSERT INTO
+  		RE_COMMENT (
+  				RENUM
+  			,	BOARDNUM
+  			,	REDATE
+  			,	REUSER
+  			,	RECONTENT	)
+  		VALUES (
+  				RENUM = #{RENUM}
+  			,	BOARDNUM = #{BOARDNUM}
+  			,	SYSDATE
+  			,	REUSER = #{REUSER}
+  			, 	RECONTENT = #{RECONTENT}
+  		)
+ 	</insert>
+ 	
+
+ 	
+  </mapper>

@@ -1,0 +1,12 @@
+package kr.co.liverpool.reply.service;
+
+import java.util.Map;
+
+public interface ReplyService {
+
+	public void writeComment(Map<String, Object> map);
+	
+	public void deleteComment(Map<String, Object> map);
+
+	
+}

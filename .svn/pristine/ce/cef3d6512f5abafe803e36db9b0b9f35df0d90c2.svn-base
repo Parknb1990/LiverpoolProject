@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="checknick" >
+  	
+  	<!-- 닉네임 불러오는 sql -->
+	<select id="NickNameCheck" resultType="kr.co.liverpool.common.vo.UserVO">
+		SELECT 
+			USERNICKNAME
+		FROM
+			USER_INFO
+		WHERE
+			USERNICKNAME = #{userNickName}
+	</select>
+	
+  </mapper>

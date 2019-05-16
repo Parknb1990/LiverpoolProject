@@ -1,0 +1,49 @@
+package kr.co.liverpool.common.vo;
+
+public class SchduleVO {
+
+	private String teamName;
+	private String homeDate;
+	private String awayDate;
+	private String teamImg;
+	public String getTeamName() {
+		return teamName;
+	}
+	public void setTeamName(String teamName) {
+		this.teamName = teamName;
+	}
+	public String getHomeDate() {
+		return homeDate;
+	}
+	public void setHomeDate(String homeDate) {
+		this.homeDate = homeDate;
+	}
+	public String getAwayDate() {
+		return awayDate;
+	}
+	public void setAwayDate(String awayDate) {
+		this.awayDate = awayDate;
+	}
+	public String getTeamImg() {
+		return teamImg;
+	}
+	public void setTeamImg(String teamImg) {
+		this.teamImg = teamImg;
+	}
+	public SchduleVO(String teamName, String homeDate, String awayDate, String teamImg) {
+		super();
+		this.teamName = teamName;
+		this.homeDate = homeDate;
+		this.awayDate = awayDate;
+		this.teamImg = teamImg;
+	}
+	@Override
+	public String toString() {
+		return "SchduleVO [teamName=" + teamName + ", homeDate=" + homeDate + ", awayDate=" + awayDate + ", teamImg="
+				+ teamImg + "]";
+	}
+	public SchduleVO() {
+		super();
+	}
+	
+}

@@ -1,0 +1,5 @@
+package kr.co.liverpool.board.service;
+
+public interface BoardService {
+
+}

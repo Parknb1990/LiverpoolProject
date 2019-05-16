@@ -1,0 +1,12 @@
+package kr.co.liverpool.login.service;
+
+import javax.servlet.http.HttpSession;
+
+import kr.co.liverpool.common.vo.UserVO;
+
+public interface LoginService {
+
+	public UserVO selectUserOne(UserVO userVO);
+	
+
+}

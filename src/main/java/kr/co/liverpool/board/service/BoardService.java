@@ -1,0 +1,25 @@
+package kr.co.liverpool.board.service;
+
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
+import kr.co.liverpool.common.vo.BoardVO;
+
+public interface BoardService {
+
+	//게시글 전체목록 보기
+	public List<BoardVO> selectBoard() throws Exception;
+	
+	//게시글 상세보기
+	public BoardVO read(int boardNum) throws Exception;
+	
+	//게시글 삭제
+	public void delete(int boardNum) throws Exception;
+	
+	//게시글 조회
+	public void increaseViewcnt(int boardNum, HttpSession session) throws Exception;
+	
+
+
+}

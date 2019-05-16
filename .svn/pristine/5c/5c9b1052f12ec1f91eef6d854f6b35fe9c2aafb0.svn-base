@@ -1,0 +1,10 @@
+package kr.co.liverpool.food.service;
+
+import java.util.List;
+
+import kr.co.liverpool.common.vo.BoardVO;
+
+public interface FoodService {
+
+	public List<BoardVO> selectFood();
+}

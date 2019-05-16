@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="reply" >
+
+ 	 
+ 	 <select id="getReply" resultType="kr.co.liverpool.common.vo.ReplyVO">
+ 	 	SELECT 
+ 	 			RID
+ 	 		,	BID
+ 	 		,	CONTENT
+ 	 		, 	REGID
+ 	 		,	REGDT
+ 	 		, 	EDITDT
+ 	 		FROM
+ 	 			REPLY
+ 	 		WHERE
+ 	 			BID = #{bId}
+ 	 		ORDER BY REG_DT DESC
+ 	 </select>
+
+	<insert id="saveReply" parameterType="kr.co.liverpool.common.vo.ReplyVO">
+		<selectKey keyProperty="rId" resultType="int" order="BEFORE">
+  			SELECT RID_SEQ.NEXTVAL FROM DUAL
+  		</selectKey>		
+  		INSERT INTO REPLY (
+  				RID
+  			,	BID
+  			,	CONTENT
+  			,	REGID
+  			,	REGDT
+  			,	EDITDT )
+  		VALUES (
+  				#{rId}
+  			,	#{bId}
+  			,	#{content}
+  			,	#{regId}
+  			,	SYSDATE
+  			,	SYSDATE )
+	</insert>
+	
+	<delete id="deleteReply" parameterType="int">
+		DELETE 
+		FROM
+				REPLY
+		WHERE
+				RID = #{rId}
+	</delete>
+ 	
+  </mapper>

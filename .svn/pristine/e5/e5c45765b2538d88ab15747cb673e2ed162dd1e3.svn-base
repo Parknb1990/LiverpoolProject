@@ -1,0 +1,20 @@
+package kr.co.liverpool.home.dao;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import kr.co.liverpool.common.vo.SchduleVO;
+
+@Repository
+public class HomeDAO {
+	
+	@Autowired
+	SqlSession sqlSession;
+	
+	public SchduleVO SchduleCheck(SchduleVO schduleVO) {
+		
+		return sqlSession.selectOne("schdule.SchduleCheck", schduleVO);
+	}
+	
+}

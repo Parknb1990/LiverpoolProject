@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="board" >
+  	
+<!--   	<insert id="insertUserOne" parameterType="kr.co.liverpool.user.vo.MemberVO">
+  		INSERT INTO REGISTER(userEmail, userPassword, userPostcode, userAddr1, userAddr2, userAddr3) 
+  		VALUES (#{userEmail}, #{userPassword}, #{userPostcode}, #{userAddr1}, #{userAddr2}, #{userAddr3}) 
+  	</insert>   -->
+  	
+  	<!-- 게시글 작성하기 -->
+  	<insert id="insertBoard" parameterType="kr.co.liverpool.common.vo.BoardVO">
+  		<selectKey keyProperty="BOARDNUM" resultType="int" order="BEFORE">
+  			SELECT BNO.NEXTVAL FROM DUAL
+  		</selectKey>
+  		INSERT INTO BOARD(
+  			  BOARDNUM
+  			, BOARDTITLE
+  			, BOARDCONTENT
+  			, BOARDDATE
+  			, USEREMAIL
+  			, USERNICKNAME
+  			, BOARDCATEGORY
+  			)
+  			VALUES (
+  				  #{BOARDNUM}
+	  			, #{BOARDTITLE}
+	  			, #{BOARDCONTENT}
+	  			, SYSDATE
+	  			, #{USEREMAIL}
+	  			, #{USERNICKNAME} 
+	  			, #{BOARDCATEGORY}
+	  		
+  			)
+  	</insert>
+  	
+  	<!-- 리버풀 게시글 목록보기 -->
+  	<select id="selectBoard" resultType="kr.co.liverpool.common.vo.BoardVO" parameterType="kr.co.liverpool.common.vo.BoardVO">
+  			SELECT 
+  				  BOARDNUM
+  				, BOARDTITLE
+  				, BOARDCONTENT
+  				, BOARDDATE
+  				, USEREMAIL
+  				, USERNICKNAME
+  				, BOARDCATEGORY	
+  				, VIEWCNT
+  			FROM 
+  				BOARD
+  			WHERE BOARDCATEGORY = '1'
+   			ORDER BY 
+  				BOARDNUM DESC
+  	</select>
+  	
+  	<!-- 풋살 게시글 목록보기 -->
+  	<select id="selectFoot" resultType="kr.co.liverpool.common.vo.BoardVO" parameterType="kr.co.liverpool.common.vo.BoardVO">
+  			SELECT 
+  				  BOARDNUM
+  				, BOARDTITLE
+  				, BOARDCONTENT
+  				, BOARDDATE
+  				, USEREMAIL
+  				, USERNICKNAME
+  				, BOARDCATEGORY	
+  				, VIEWCNT
+  			FROM 
+  				BOARD
+  			WHERE BOARDCATEGORY = '2'
+   			ORDER BY 
+  				BOARDNUM DESC
+  	</select>
+  	
+  	<!-- 자유게시판 게시글 목록보기 -->
+  	<select id="selectFree" resultType="kr.co.liverpool.common.vo.BoardVO" parameterType="kr.co.liverpool.common.vo.BoardVO">
+  			SELECT 
+  				  BOARDNUM
+  				, BOARDTITLE
+  				, BOARDCONTENT
+  				, BOARDDATE
+  				, USEREMAIL
+  				, USERNICKNAME
+  				, BOARDCATEGORY	
+  				, VIEWCNT
+  			FROM 
+  				BOARD
+  			WHERE BOARDCATEGORY = '3'
+   			ORDER BY 
+  				BOARDNUM DESC
+  	</select>
+  	
+  	<!-- 유머 게시글 목록보기 -->
+  	<select id="selectHumor" resultType="kr.co.liverpool.common.vo.BoardVO" parameterType="kr.co.liverpool.common.vo.BoardVO">
+  			SELECT 
+  				  BOARDNUM
+  				, BOARDTITLE
+  				, BOARDCONTENT
+  				, BOARDDATE
+  				, USEREMAIL
+  				, USERNICKNAME
+  				, BOARDCATEGORY	
+  				, VIEWCNT
+  			FROM 
+  				BOARD
+  			WHERE BOARDCATEGORY = '4'
+   			ORDER BY 
+  				BOARDNUM DESC
+  	</select>
+  	
+  	<!-- 게임 게시글 목록보기 -->
+  	<select id="selectGame" resultType="kr.co.liverpool.common.vo.BoardVO" parameterType="kr.co.liverpool.common.vo.BoardVO">
+  			SELECT 
+  				  BOARDNUM
+  				, BOARDTITLE
+  				, BOARDCONTENT
+  				, BOARDDATE
+  				, USEREMAIL
+  				, USERNICKNAME
+  				, BOARDCATEGORY	
+  				, VIEWCNT
+  			FROM 
+  				BOARD
+  			WHERE BOARDCATEGORY = '5'
+   			ORDER BY 
+  				BOARDNUM DESC
+  	</select>
+  	
+  	<!-- 동물 게시글 목록보기 -->
+  	<select id="selectAnimal" resultType="kr.co.liverpool.common.vo.BoardVO" parameterType="kr.co.liverpool.common.vo.BoardVO">
+  			SELECT 
+  				  BOARDNUM
+  				, BOARDTITLE
+  				, BOARDCONTENT
+  				, BOARDDATE
+  				, USEREMAIL
+  				, USERNICKNAME
+  				, BOARDCATEGORY	
+  				, VIEWCNT
+  			FROM 
+  				BOARD
+  			WHERE BOARDCATEGORY = '6'
+   			ORDER BY 
+  				BOARDNUM DESC
+  	</select>
+  	
+  	<!-- 음식 게시글 목록보기 -->
+  	<select id="selectFood" resultType="kr.co.liverpool.common.vo.BoardVO" parameterType="kr.co.liverpool.common.vo.BoardVO">
+  			SELECT 
+  				  BOARDNUM
+  				, BOARDTITLE
+  				, BOARDCONTENT
+  				, BOARDDATE
+  				, USEREMAIL
+  				, USERNICKNAME
+  				, BOARDCATEGORY	
+  				, VIEWCNT
+  			FROM 
+  				BOARD
+  			WHERE BOARDCATEGORY = '7'
+   			ORDER BY 
+  				BOARDNUM DESC
+  	</select>
+  	
+  	
+  	<!-- 게시글 상세보기 -->
+  	<select id="view" resultType="kr.co.liverpool.common.vo.BoardVO">
+  		SELECT 
+  			  BOARDNUM
+  			, BOARDTITLE
+  			, BOARDCONTENT
+  			, BOARDDATE
+  			, USERNICKNAME
+  			, VIEWCNT
+  		FROM
+  			BOARD
+  		WHERE
+  			BOARDNUM = #{BOARDNUM} 
+  	</select>
+  	
+  	
+  	
+  	<!-- 게시글 삭제하기 -->
+  	<delete id="delete">
+  		DELETE 
+  		FROM 
+  			BOARD
+  		WHERE
+  			BOARDNUM = #{BOARDNUM}
+  	</delete>
+  	
+  	<!-- 조회수 증가 -->
+  	
+  	<update id="increaseViewcnt">
+  		UPDATE 
+  			BOARD
+  		SET 
+  			VIEWCNT = VIEWCNT+1
+  		WHERE
+  			BOARDNUM = #{BOARDNUM}
+  	</update>
+
+  </mapper>

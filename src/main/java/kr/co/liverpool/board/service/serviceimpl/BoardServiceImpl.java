@@ -1,0 +1,68 @@
+package kr.co.liverpool.board.service.serviceimpl;
+
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import kr.co.liverpool.board.dao.BoardDAO;
+import kr.co.liverpool.board.service.BoardService;
+import kr.co.liverpool.common.vo.BoardVO;
+import kr.co.liverpool.common.vo.ReplyVO;
+
+@Service
+public class BoardServiceImpl implements BoardService{
+
+	@Autowired
+	private BoardDAO boardDAO;
+
+	//게시글 목록 보기
+	@Override
+	public List<BoardVO> selectBoard() {
+		
+		return boardDAO.selectBoard();
+	}
+
+	//게시글 상세 보기
+	@Override
+	public BoardVO read(int boardNum) {
+		
+		BoardVO boardVO = boardDAO.read(boardNum);
+		List<ReplyVO> replyList = boardDAO.selectReplyList(boardVO);
+		
+		boardVO.setReplyList(replyList);
+		
+		return boardVO; 
+	}
+
+	//게시글 삭제하기
+	@Override
+	public void delete(int boardNum) {
+		boardDAO.delete(boardNum);
+		
+	}
+
+	@Override
+	public void increaseViewcnt(int boardNum, HttpSession session) {
+		
+		long update_time = 0;
+		if(session.getAttribute("update_time_"+boardNum) != null) {
+			update_time = (Long) session.getAttribute("update_time_"+boardNum);
+		}
+		
+		long current_time = System.currentTimeMillis();
+		
+		if (current_time - update_time > 5*1000) {
+			boardDAO.increaseViewcnt(boardNum);
+			
+			session.setAttribute("update_time_"+boardNum, current_time);
+		}
+		
+	}
+
+	
+
+
+}
